@@ -1,0 +1,10 @@
+MVC패턴에서는
+
+Controller(서블릭) 을 통해서 View(jsp) 에 접근해야함
+
+ex)
+<a href="join.jsp">회원가입</a> (x)
+<a href="join">회원가입</a> 	(o)
+
+location.href="join.jsp" 	(x)
+location.href="join" 		(o)

@@ -1,0 +1,2 @@
+1. layout04.html을 jsp로 변경해서 
+네비게이션 부분을 include를 이용해서 구현하기.
