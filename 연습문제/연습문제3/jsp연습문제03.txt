@@ -1,0 +1,36 @@
+1. P304번 게시글 정보를 위한 자바 빈 작성하기.
+
+=> 입력정보 출력시 scriptlet을 쓰는 방법, scriptlet을 사용하지
+않는 법 모두 작성.
+
+
+2. https://blog.naver.com/mans122/221705446796
+
+jsp에서 A 페이지에서 B페이지로 값을 전달하는 방법 정리하기
+
+다음 값을 보내고 받는 페이지를 작성해보세요.
+
+1). 링크
+	<a href="b.jsp?userid=hkd>클릭</a>
+
+2). form
+	<form action="b.jsp" method="get">
+		<input type="hidden" name="userid" value="hkd">
+	</form>
+
+3). javascript
+	location.href="b.jsp?userid=hkd";
+
+
+4). redirect
+	response.sendRedirect("b.jsp?userid=hkd");
+
+5). forwarding
+	request.setAttribute("userid", "hkd");
+	RequestDispatcher dispatcher=request.getRequestDispatcher("b.jsp");
+	dispatcher.forward(request, response);
+
+6). cookie
+
+
+7). session
