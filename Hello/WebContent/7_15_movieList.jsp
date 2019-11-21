@@ -50,5 +50,15 @@ pageContext.setAttribute("movieList", movieList);
 	</tr>
 </c:forEach>
 </table>
+
+<c:forTokens var="info" items="서울.인천,대구.부산" delims=",">
+${info} <br>
+</c:forTokens>
+
+	<c:forTokens var="info" items="서울.인천,대구.부산" delims=",">
+		<c:forTokens var="data" items="${info}" delims=".">
+			${data} <br>
+		</c:forTokens>
+	</c:forTokens>
 </body>
 </html>

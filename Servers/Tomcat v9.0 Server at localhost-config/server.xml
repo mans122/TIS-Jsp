@@ -149,7 +149,20 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="web-study-01" path="/web-study-01" reloadable="true" source="org.eclipse.jst.jee.server:web-study-01"/><Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="web-study-02" path="/web-study-02" reloadable="true" source="org.eclipse.jst.jee.server:web-study-02"/><Context docBase="Practice" path="/Practice" reloadable="true" source="org.eclipse.jst.jee.server:Practice"/></Host>
+      
+      
+      
+      
+      ﻿
+      <Context docBase="member" path="/member" reloadable="true" source="org.eclipse.jst.jee.server:member">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/></Context>
+      <Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="Practice" path="/Practice" reloadable="true" source="org.eclipse.jst.jee.server:Practice"/><Context docBase="Product" path="/Product" reloadable="true" source="org.eclipse.jst.jee.server:Product">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
+      </Context>
+      <Context docBase="movie" path="/movie" reloadable="true" source="org.eclipse.jst.jee.server:movie">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
+      </Context>
+      </Host>
     </Engine>
   </Service>
 </Server>
