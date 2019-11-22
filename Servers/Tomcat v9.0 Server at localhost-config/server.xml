@@ -105,7 +105,7 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
-    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
+    <Connector URIEncoding="UTF-8" port="8009" protocol="AJP/1.3" redirectPort="8443"/>
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes
@@ -155,14 +155,22 @@
       
       ﻿
       <Context docBase="member" path="/member" reloadable="true" source="org.eclipse.jst.jee.server:member">
-      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/></Context>
-      <Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/><Context docBase="Practice" path="/Practice" reloadable="true" source="org.eclipse.jst.jee.server:Practice"/><Context docBase="Product" path="/Product" reloadable="true" source="org.eclipse.jst.jee.server:Product">
       <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
       </Context>
+      
+      <Context docBase="Hello" path="/Hello" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/>
+      
+      <Context docBase="Practice" path="/Practice" reloadable="true" source="org.eclipse.jst.jee.server:Practice"/><Context docBase="Product" path="/Product" reloadable="true" source="org.eclipse.jst.jee.server:Product">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
+      </Context>
+      
       <Context docBase="movie" path="/movie" reloadable="true" source="org.eclipse.jst.jee.server:movie">
       <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
       </Context>
-      </Host>
+      
+      <Context docBase="board" path="/board" reloadable="true" source="org.eclipse.jst.jee.server:board">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
+      </Context></Host>
     </Engine>
   </Service>
 </Server>
