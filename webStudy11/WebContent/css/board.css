@@ -1,0 +1,50 @@
+#wrap{
+	width:971px;
+	margin:0 auto;
+	text-align:center;
+}
+
+h1{
+	color:green;
+}
+
+table{
+	width:100%;
+	border-collapse: collapse; /* 테이블 테두리 한줄로 출력 */
+	font-size:12px;
+	line-height:24px;
+}
+
+td, th{
+	border:#d3d3d3 solid 1px;
+	padding:5px;
+}
+
+td{ text-align:left;}
+
+#image{ text-align:center;}
+#table2{ text-align:center;}
+
+th{
+	background:yellowgreen;
+}
+
+img{
+	width:220px;
+	height:300px;
+}
+
+a{ 
+	text-decoration:none;
+	color:black;
+}
+
+a:hover{
+	text-decoration: underline;
+	color:green;
+}
+
+
+
+
+

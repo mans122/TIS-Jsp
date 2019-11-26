@@ -7,11 +7,11 @@ public class ActionFactory {
 	public ActionFactory() {
 		super();
 	}
-	
+
 	public static ActionFactory getInstance() {
 		return instance;
 	}
-	
+
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory : "+command);
@@ -34,7 +34,7 @@ public class ActionFactory {
 		}else if(command.contentEquals("board_update_form")) {
 			action = new BoardUpdateFormAction();
 		}else if(command.contentEquals("board_update")) {
-				action = new BoardUpdateAction();
+			action = new BoardUpdateAction();
 		}else if(command.contentEquals("board_delete")) {
 			action = new BoardDeleteAction();
 		}else if(command.contentEquals("reply_write")) {
@@ -46,11 +46,13 @@ public class ActionFactory {
 		}else if(command.contentEquals("reply_update_form")) {
 			action = new ReplyUpdateFormAction();
 		}else if(command.contentEquals("reply_update")) {
-				action = new ReplyUpdateAction();
+			action = new ReplyUpdateAction();
+		}else if(command.contentEquals("reply_delete")) {
+			action = new ReplyDeleteAction();
 		}
-//		else if(command.contentEquals("reply_delete")) {
-//			action = new ReplyDeleteAction();
-//		}
+		//		else if(command.contentEquals("reply_delete")) {
+		//			action = new ReplyDeleteAction();
+		//		}
 		//내용 끝
 		return action;
 	}

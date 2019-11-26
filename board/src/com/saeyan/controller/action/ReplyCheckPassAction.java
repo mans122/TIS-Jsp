@@ -17,9 +17,9 @@ public class ReplyCheckPassAction implements Action{
 		String url = null;
 		String no = request.getParameter("no");
 		String password = request.getParameter("password");
-		
 		BoardDAO bDao = BoardDAO.getInstance();
 		ReplyVO rVo = bDao.replyCheckPassWord(password, no);
+		
 		if(rVo!=null) {
 			if(rVo.getPassword().equals(password)) {
 				url="/board/replyCheckSuccess.jsp";

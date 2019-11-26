@@ -58,7 +58,7 @@
 					<!-- <input type="button" value="수정" onclick="open_win2('${reply.no}')"> 
 					<input type="button" value="삭제" onclick="open_win2('${reply.no}')"> -->
 					<input type="button" value="수정" onclick="open_win('BoardServlet?command=reply_check_pass_form&no=${reply.no}','update')"> 
-					<input type="button" value="삭제" onclick="open_win('BoardServlet?command=reply_check_pass_form&no=${reply.no}','delete')">
+					<input type="button" value="삭제" onclick="open_win('BoardServlet?command=reply_check_pass_form&no=${reply.no}&pNum=${reply.pNum}','delete')">
 					</td>
 				</tr>
 				<tr><td style="border: none;" colspan="2"><hr></td></tr>
@@ -77,6 +77,7 @@
 				<tr><td><input type="submit" value="댓글등록"	onclick="return replyCheck()"></td>	</tr>
 			</table>
 		</form>
+		<jsp:include page="rPaging.jsp"></jsp:include>
 	</div>
 </body>
 </html>

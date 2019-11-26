@@ -22,6 +22,7 @@ public class BoardViewAction implements Action{
 		if(request.getParameter("num")!=null) {
 			num = request.getParameter("num");
 		}
+		
 		//댓글 등록 후 상세보기로 넘어갈 때
 		if(request.getAttribute("num")!=null) {
 			num=(String)request.getAttribute("num");
@@ -31,9 +32,6 @@ public class BoardViewAction implements Action{
 		int pNum = Integer.parseInt(num);
 		BoardDAO bDao = BoardDAO.getInstance();
 		
-		
-//		String num = request.getParameter("num");
-//		BoardDAO bDao = BoardDAO.getInstance();
 		
 		//쿠키변수를 만들어서 값을 저장, 쿠키변수에 값이 있으면 조회수 증가 실행하지 않음.
 		boolean isGet=false;
@@ -52,12 +50,24 @@ public class BoardViewAction implements Action{
 				response.addCookie(c1);
 			}
 		}
+		int pageno;
+		if(request.getParameter("pageno")!=null) {
+			pageno=Integer.parseInt(request.getParameter("pageno"));
+		}else {
+			pageno=1;
+		}
+		
+		
 		//글 상세보기
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
 		request.setAttribute("board", bVo);
 		//댓글목록
-		List<ReplyVO> replyList = bDao.selectAllReplys(pNum);
+		List<ReplyVO> replyList = bDao.selectAllReplys(pNum,pageno);
 		request.setAttribute("replyList", replyList);
+		
+		//댓글 페이지
+		int replyCount = bDao.selectCountReply();
+		request.setAttribute("replyCount", replyCount);
 		
 		//상세페이지로 이동
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

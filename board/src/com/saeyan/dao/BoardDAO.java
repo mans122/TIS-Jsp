@@ -288,6 +288,21 @@ public class BoardDAO {
 		}
 	}
 	
+	public void deleteReply(int no) {
+		String sql = "delete reply where no=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBManager.close(conn,pstmt);
+		}
+	}
 	//Page 구현을 위해 게시글의 개수를 구해주는 코드
 	public int selectCountBoard() {
 		String sql = "select count(*) as recordCount from board";
@@ -310,9 +325,58 @@ public class BoardDAO {
 		}
 		return recordCount; //VO 리턴
 	}
+	public int selectCountReply() {
+		String sql = "select count(*) as replyCount from reply";
+		
+		Connection conn = null;
+		Statement stmt= null;
+		ResultSet rs = null;
+		int replyCount=0;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				replyCount = rs.getInt("replyCount");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DBManager.close(conn,stmt,rs);
+		}
+		return replyCount; //VO 리턴
+	}
 	
-	public List<ReplyVO> selectAllReplys(int pNum){
-		String sql = "select * from reply where pNum = ? order by no";
+//	public List<ReplyVO> selectAllReplys(int pNum){
+//		String sql = "select * from reply where pNum = ? order by no";
+//		List<ReplyVO> list = new ArrayList<ReplyVO>();
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		try {
+//			conn=DBManager.getConnection();
+//			pstmt=conn.prepareStatement(sql);
+//			pstmt.setInt(1, pNum);
+//			rs= pstmt.executeQuery();
+//			while(rs.next()) {
+//				ReplyVO rVo = new ReplyVO();
+//				rVo.setNo(rs.getInt("no"));
+//				rVo.setpNum(rs.getInt("pNum"));
+//				rVo.setName(rs.getString("name"));
+//				rVo.setPassword(rs.getString("password"));
+//				rVo.setContent(rs.getString("content"));
+//				rVo.setWritedate(rs.getTimestamp("writedate"));
+//				list.add(rVo);
+//			}
+//		}catch(SQLException e){
+//			e.printStackTrace();
+//		}finally{
+//			DBManager.close(conn,pstmt,rs);
+//		}	
+//		return list;
+//	}
+	public List<ReplyVO> selectAllReplys(int pNum,int pageno){
+		String sql = "select * from (select rownum as rnum, a.* from (select * from reply where pnum=? order by no desc) a where rownum<=?) x where x.rnum>=?";
 		List<ReplyVO> list = new ArrayList<ReplyVO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -321,6 +385,8 @@ public class BoardDAO {
 			conn=DBManager.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, pNum);
+			pstmt.setInt(2, pageno*10);
+			pstmt.setInt(3, (pageno-1)*10+1);
 			rs= pstmt.executeQuery();
 			while(rs.next()) {
 				ReplyVO rVo = new ReplyVO();
