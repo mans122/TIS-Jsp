@@ -37,7 +37,20 @@ public class ActionFactory {
 				action = new BoardUpdateAction();
 		}else if(command.contentEquals("board_delete")) {
 			action = new BoardDeleteAction();
+		}else if(command.contentEquals("reply_write")) {
+			action = new ReplyWriteAction();
+		}else if(command.equals("reply_check_pass_form")) {
+			action = new ReplyCheckPassFormAction();
+		}else if(command.equals("reply_check_pass")) {
+			action = new ReplyCheckPassAction();
+		}else if(command.contentEquals("reply_update_form")) {
+			action = new ReplyUpdateFormAction();
+		}else if(command.contentEquals("reply_update")) {
+				action = new ReplyUpdateAction();
 		}
+//		else if(command.contentEquals("reply_delete")) {
+//			action = new ReplyDeleteAction();
+//		}
 		//내용 끝
 		return action;
 	}

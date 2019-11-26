@@ -23,9 +23,6 @@ function boardCheck(){
 			}
 		}
 	}
-
-	
-
 	if(document.frm.content.value.length==0){
 		alert("내용 입력하세요");
 		frm.content.focus();
@@ -43,6 +40,11 @@ function boardCheck(){
 function open_win(url,name){
 	window.open(url,name, "width=500,height=230");
 }
+
+function open_win2(url,name){	
+	window.open(url,name, "width=1200,height=400");
+}
+
 function passCheck(){
 	if(document.frm.pass.value.length==0){
 		alert("비밀번호를 입력하세요");
