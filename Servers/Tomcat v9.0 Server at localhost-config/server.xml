@@ -170,7 +170,9 @@
       
       <Context docBase="board" path="/board" reloadable="true" source="org.eclipse.jst.jee.server:board">
       <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
-      </Context></Host>
+      </Context><Context docBase="BoardImGreen" path="/Board" reloadable="true" source="org.eclipse.jst.jee.server:BoardImGreen">
+      <Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="hong" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:myoracle" username="ora_user"/>
+      </Context><Context docBase="BoardImGreen" path="/Board" reloadable="true" source="org.eclipse.jst.jee.server:BoardImGreen"/></Host>
     </Engine>
   </Service>
 </Server>
